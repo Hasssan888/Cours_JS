@@ -1,0 +1,28 @@
+
+
+.content {
+    /* background-color: antiquewhite; */
+    /* display: flex; */
+    /* flex-direction: row; 
+    flex-wrap: wrap ;
+    justify-content: flex-start; */
+    /* flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-end; */
+    /* flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end; */
+    flex-direction: row ;
+    flex-wrap: wrap ;
+    justify-content: flex-end;
+}
+
+/* .content div {
+    background-color:blueviolet;
+    margin: 2px;
+    text-align: center;
+    line-height: 70px;
+    width: 400px;
+    height: 70px;
+} */
+
