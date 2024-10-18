@@ -1,21 +1,18 @@
 
 
-let myTask = document.querySelector(".my-div");
-let mybtn = document.createElement("button");
-let myText = document.createTextNode("Delete");
-let myAdd  = document.querySelector(".add");
-let myInp = document.querySelector("#inp");
-let myCreat = document.createElement("div");
-let myP = document.createElement("p");
-
-
 
 
 // دالة لاسترجاع المهام من localStorage أو إنشاء Array فارغ إذا كانت غير موجودة
 function getTasks() {
     let tasks = window.localStorage.getItem("tasks");
-    return tasks ? JSON.parse(tasks) : [];
+    
+    if (tasks) {
+        return JSON.parse(tasks); // إذا كانت هناك مهام مخزنة، قم بتحويلها من JSON إلى مصفوفة
+    } else {
+        return []; // إذا لم تكن هناك مهام مخزنة، أرجع مصفوفة فارغة
+    }
 }
+
 
 // دالة لتخزين المهام في localStorage
 function saveTasks(tasks) {
@@ -27,15 +24,41 @@ function renderTasks() {
     let tasks = getTasks();
     const taskList = document.querySelector(".my-div");
     taskList.innerHTML = ''; // مسح المهام الحالية قبل إعادة العرض
-    
     tasks.forEach((task, index) => {
         let taskItem = document.createElement("div");
         taskItem.innerHTML = `
         <p>${task}</p>
         <button class="delete-btn" data-index="${index}">Delete</button>
         `;
-        taskItem.classList.add("task-item");
-        taskList.appendChild(taskItem);
+          // Adding styles to the task item
+          taskItem.style.width = "600px"; // Set the width of the task item
+          taskItem.style.height = "50px"; // Set the height of the task item
+          taskItem.style.margin = "10px auto"; // Center the item with margin
+          taskItem.style.backgroundColor = "white"; // Set the background color
+          taskItem.style.position = "relative"; // Positioning
+          taskItem.style.borderRadius = "5px"; // Rounded corners
+          taskItem.style.display = "flex"; // Use flexbox layout
+          taskItem.style.alignItems = "center"; // Center items vertically
+          taskItem.style.justifyContent = "space-between";
+  
+          // Adding styles for the paragraph inside the task item
+          const taskParagraph = taskItem.querySelector("p");
+          taskParagraph.style.fontSize = "22px"; // Set the font size for task description
+          taskParagraph.style.margin = "10px"; // Remove default margin
+          
+          // Adding styles for the delete button
+          const deleteButton = taskItem.querySelector(".delete-btn");
+          deleteButton.style.backgroundColor = "red"; // Set button background color
+          deleteButton.style.color = "white"; // Set button text color
+          deleteButton.style.padding = "10px"; // Set padding for button
+          deleteButton.style.border = "none"; // Remove border
+          deleteButton.style.borderRadius = "5px"; // Round button corners
+          deleteButton.style.fontWeight = "bold"; // Bold text
+          deleteButton.style.cursor = "pointer"; // Change cursor on hover
+          deleteButton.style.margin = "10px";
+  
+          // Append the styled task item to the task list
+          taskList.appendChild(taskItem);
     });
 }
 
