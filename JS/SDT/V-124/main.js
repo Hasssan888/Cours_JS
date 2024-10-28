@@ -46,5 +46,5 @@ console.log("#".repeat(20));
 
 // Type Of Data
 let myws = new WeakSet([{ A: 1, B: 2}]);
-// console.log(myws);
+console.log(myws);
 
